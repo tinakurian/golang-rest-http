@@ -46,7 +46,7 @@ required = [
 ]
 
 ignored = [
-  "github.com/fabric8-services/golang-foo/app",
+  "github.com/sbose78/golang-foo/app",
 ]
 
 
