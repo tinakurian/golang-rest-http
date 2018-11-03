@@ -11,8 +11,6 @@ import (
 	"github.com/fabric8-services/fabric8-common/log"
 	"github.com/fabric8-services/fabric8-common/metric"
 	"github.com/fabric8-services/fabric8-common/sentry"
-	"github.com/fabric8-services/golang-foo/app"
-	"github.com/fabric8-services/golang-foo/controller"
 	"github.com/goadesign/goa"
 	goalogrus "github.com/goadesign/goa/logging/logrus"
 	"github.com/goadesign/goa/middleware"
@@ -20,6 +18,8 @@ import (
 	"github.com/google/gops/agent"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/sbose78/golang-foo/app"
+	"github.com/sbose78/golang-foo/controller"
 )
 
 func main() {
