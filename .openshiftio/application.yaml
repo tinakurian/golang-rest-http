@@ -132,7 +132,7 @@ objects:
                 periodSeconds: 3
                 successThreshold: 1
                 timeoutSeconds: 1
-              image: golang-foo${SUFFIX_NAME}:${RELEASE_VERSION}
+              image: golang-foo${SUFFIX_NAME}
               name: golang-foo${SUFFIX_NAME}
               securityContext:
                 privileged: false
@@ -160,7 +160,7 @@ objects:
               - golang-foo${SUFFIX_NAME}
             from:
               kind: ImageStreamTag
-              name: 'golang-foo${SUFFIX_NAME}:RELEASE_VERSION'
+              name: 'golang-foo${SUFFIX_NAME}:${RELEASE_VERSION}'
   - apiVersion: v1
     kind: Route
     metadata:
