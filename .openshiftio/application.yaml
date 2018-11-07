@@ -48,7 +48,7 @@ objects:
         - name: latest
           from:
             kind: DockerImage
-            name: 'centos/go-toolset-7-centos7:latest'
+            name: 'sbose78/golang-s2i-with-dep:latest'
   - apiVersion: v1
     kind: BuildConfig
     metadata:
