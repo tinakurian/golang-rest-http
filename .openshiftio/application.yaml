@@ -48,7 +48,7 @@ objects:
         - name: latest
           from:
             kind: DockerImage
-            name: 'sbose78/golang-s2i-with-dep:latest'
+            name: 'centos/go-toolset-7-centos7:latest'
   - apiVersion: v1
     kind: BuildConfig
     metadata:
@@ -132,7 +132,7 @@ objects:
                 periodSeconds: 3
                 successThreshold: 1
                 timeoutSeconds: 1
-              image: golang-foo${SUFFIX_NAME}
+              image: golang-foo${SUFFIX_NAME}:${RELEASE_VERSION}
               name: golang-foo${SUFFIX_NAME}
               securityContext:
                 privileged: false
@@ -160,7 +160,7 @@ objects:
               - golang-foo${SUFFIX_NAME}
             from:
               kind: ImageStreamTag
-              name: 'golang-foo${SUFFIX_NAME}:latest'
+              name: 'golang-foo${SUFFIX_NAME}:RELEASE_VERSION'
   - apiVersion: v1
     kind: Route
     metadata:
