@@ -114,7 +114,7 @@ objects:
           containers:
             - readinessProbe:
                 httpGet:
-                  path: /api/health/readiness
+                  path: /api/status
                   port: 8080
                   scheme: HTTP
                 failureThreshold: 3
@@ -124,7 +124,7 @@ objects:
                 timeoutSeconds: 1
               livenessProbe:
                 httpGet:
-                  path: /api/health/liveness
+                  path: /api/status
                   port: 8080
                   scheme: HTTP
                 failureThreshold: 2
