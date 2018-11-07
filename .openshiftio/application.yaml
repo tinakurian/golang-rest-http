@@ -30,6 +30,9 @@ parameters:
     required: true
     from: '[a-zA-Z0-9]{40}'
     generate: expression
+  - name: RELEASE_VERSION
+    description: The release verison/tag for the template objects
+    displayName: Release version
 objects:
   - apiVersion: v1
     kind: ImageStream
@@ -39,7 +42,7 @@ objects:
   - apiVersion: v1
     kind: ImageStream
     metadata:
-      name: runtime${SUFFIX_NAME}
+      name: runtime-go${SUFFIX_NAME}
     spec:
       tags:
         - name: latest
@@ -67,7 +70,7 @@ objects:
         sourceStrategy:
           from:
             kind: ImageStreamTag
-            name: 'runtime${SUFFIX_NAME}:latest'
+            name: 'runtime-go${SUFFIX_NAME}:latest'
           incremental: true
       triggers:
         - github:
