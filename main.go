@@ -15,11 +15,11 @@ import (
 	goalogrus "github.com/goadesign/goa/logging/logrus"
 	"github.com/goadesign/goa/middleware"
 	"github.com/goadesign/goa/middleware/gzip"
+	"github.com/golang-starters/golang-rest-http/app"
+	"github.com/golang-starters/golang-rest-http/controller"
 	"github.com/google/gops/agent"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/sbose78/golang-foo/app"
-	"github.com/sbose78/golang-foo/controller"
 )
 
 func main() {

@@ -46,10 +46,6 @@ required = [
   "github.com/pilu/fresh", # used to rebuild if source changed while running
 ]
 
-ignored = [
-  "github.com/sbose78/golang-foo/app",
-]
-
 
 [prune]
   go-tests = true
