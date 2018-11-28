@@ -2,7 +2,7 @@ package controller
 
 import (
 	"github.com/goadesign/goa"
-	"github.com/sbose78/golang-foo/app"
+	"github.com/golang-starters/golang-rest-http/app"
 )
 
 // StatusController implements the status resource.

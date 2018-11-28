@@ -1,5 +1,5 @@
-PROJECT_NAME=golang-foo
-PACKAGE_NAME:=github.com/sbose78/$(PROJECT_NAME)
+PROJECT_NAME=golang-rest-http
+PACKAGE_NAME:=github.com/golang-starters/$(PROJECT_NAME)
 CUR_DIR=$(shell pwd)
 TMP_PATH=$(CUR_DIR)/tmp
 INSTALL_PREFIX=$(CUR_DIR)/bin
