@@ -4,8 +4,8 @@
 //
 // Command:
 // $ goagen
-// --design=github.com/sbose78/golang-foo/design
-// --out=$(GOPATH)/src/github.com/sbose78/golang-foo
+// --design=github.com/golang-starters/golang-rest-http/design
+// --out=$(GOPATH)/src/github.com/golang-starters/golang-rest-http
 // --version=v1.3.0
 
 package app
