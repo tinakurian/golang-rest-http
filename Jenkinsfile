@@ -1,36 +1,29 @@
 #!/usr/bin/groovy
+@Library('github.com/fabric8io/fabric8-pipeline-library@master')
+def utils = new io.fabric8.Utils()
+clientsNode{
+  def envStage = utils.environmentNamespace('stage')
+  def newVersion = ''
 
-@Library('github.com/fabric8io/osio-pipeline@master') _
+  checkout scm
 
-
-osio {
-
-  config runtime: 'golang'
-
-  ci {
-     // override the RELEASE_VERSION template parameter
-    def resources = processTemplate(params: [
-        RELEASE_VERSION: "1.0.${env.BUILD_NUMBER}"
-    ])
-    
-    // performs an s2i build
-    build resources: resources    
-    
-    deploy resources: resources, env: 'stage' 
-
+  stage('Build Release')
+  echo 'NOTE: running pipelines for the first time will take longer as build and base docker images are pulled onto the node'
+  if (!fileExists ('Dockerfile')) {
+    writeFile file: 'Dockerfile', text: 'FROM golang:onbuild'
   }
 
-  cd {
+  newVersion = performCanaryRelease {}
 
-    // override the RELEASE_VERSION template parameter
-    def resources = processTemplate(params: [
-        RELEASE_VERSION: "1.0.${env.BUILD_NUMBER}"
-    ])
-
-     // performs an s2i build
-    build resources: resources
-    
-    deploy resources: resources, env: 'stage' 
-    deploy resources: resources, env: 'run', approval: 'manual'
+  def rc = getDeploymentResources {
+    port = 8080
+    label = 'golang'
+    icon = 'https://cdn.rawgit.com/fabric8io/fabric8/dc05040/website/src/images/logos/gopher.png'
+    version = newVersion
+    imageName = clusterImageName
   }
+
+  stage('Rollout to Stage')
+  kubernetesApply(file: rc, environment: envStage)
+
 }
